@@ -1,0 +1,76 @@
+$purple: #7C3AED;
+
+.main {
+  display: grid;
+  place-items: center;
+}
+
+.table {
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  &__header {
+    color: white;
+    background-color: $purple;
+  
+    &:first-of-type {
+      border-top-left-radius: 4px;
+    }
+
+    &:last-of-type {
+      border-top-right-radius: 4px;
+    }
+  }
+
+  &:nth-child(even) > input {
+    background-color: black;
+  }
+
+  &__input, &__cell, &__body {
+    padding: 0px;
+  }
+
+  &__body {
+    box-sizing: border-box;
+    border: 1px solid black;
+  }
+
+  &__cell {
+    text-align: center;
+  }
+}
+
+.textarea {
+  font-family: monospace;
+
+  margin-top: 24px;
+  width: 80%;
+  height: 240px;
+}
+
+// For debugging purposes only
+// table, th, td {
+//   border: 1px solid black;
+// }
+
+/*
+
+  &__row {
+    // background-color: #6B7280;
+  }
+
+  // &__row {
+  //   &:nth-child(even) {
+  //     background-color: black;
+
+  //     & > .table_cell > .table__input {
+  //       color: GREEN;
+  //     }
+  //   }
+
+  //   &:nth-child(odd) {
+  //     background-color: red;
+  //   }
+  // }
+
+  */
