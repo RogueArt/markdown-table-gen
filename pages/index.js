@@ -17,11 +17,12 @@ export default function Home() {
   const tableContentsAsStr = formatTableAsStr(tableContents)
 
   // Handle user shortcuts
-  useHotkeys('shift+left', () => handleSizeChange(height, width - 1))
-  useHotkeys('shift+right', () => handleSizeChange(height, width + 1))
-  useHotkeys('shift+down', () => handleSizeChange(height + 1, width))
-  useHotkeys('shift+up', () => handleSizeChange(height - 1, width))
-  useHotkeys('shift+c', () => copyContentsToClipboard())
+  const depArr = [height, width, tableContents]
+  useHotkeys('shift+left', () => handleSizeChange(height, width - 1), depArr)
+  useHotkeys('shift+right', () => handleSizeChange(height, width + 1), depArr)
+  useHotkeys('shift+down', () => handleSizeChange(height + 1, width), depArr)
+  useHotkeys('shift+up', () => handleSizeChange(height - 1, width), depArr)
+  useHotkeys('shift+c', () => copyContentsToClipboard(), [tableContents])
 
   // Write prettified markdown to the clipboard
   function copyContentsToClipboard() {
@@ -31,7 +32,11 @@ export default function Home() {
 
   // Resize the array if the size changes
   function handleSizeChange(newHeight, newWidth) {
+    // Height has not changed, return
     if (newHeight === height && newWidth === width) return
+
+    // Cannot have a table with zero height or width
+    if (newHeight === 0 || newWidth === 0) return
 
     // Update height and width
     setHeight(height => newHeight)
@@ -104,6 +109,40 @@ export default function Home() {
       {/* Table generator */}
       <main className="main">
         <h1 className="title">Markdown Table Generator</h1>
+
+        <section className="shortcuts">
+          <h2 className="shortcuts__title">Shortcuts</h2>
+          <ol className="shortcuts__list">
+            <li>
+              <p className="shortcuts__desc">
+                <b>Shift + Left</b>: Removes a column
+              </p>
+            </li>
+            <li>
+              <p className="shortcuts__desc">
+                <b>Shift + Right</b>: Adds a column
+              </p>
+            </li>
+            <li>
+              <p className="shortcuts__desc">
+                <b>Shift + Down</b>: Adds a row
+              </p>
+            </li>
+            <li>
+              <p className="shortcuts__desc">
+                <b>Shift + Up</b>: Removes a row
+              </p>
+            </li>
+            <li>
+              <p className="shortcuts__desc">
+                <b>Shift + C</b>: Copies the markdown to your clipboard
+              </p>
+            </li>
+          </ol>
+          <p className="shortcuts__warning">
+            Note: Perform the shortcut outside of the table.
+          </p>
+        </section>
 
         {/* Interactive table */}
         <table className="table">

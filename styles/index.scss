@@ -40,6 +40,26 @@ $purple: #7C3AED;
   }
 }
 
+.shortcuts {
+  &__title {
+    margin: 0;
+  }
+
+  &__list {
+    margin: 0;
+  }
+
+  &__desc {
+    text-align: left;
+    margin: 4px;
+  }
+  
+  &__warning {
+    margin-top: 0px;
+    font-weight: bold;
+  }
+}
+
 .textarea {
   font-family: monospace;
 
@@ -57,30 +77,3 @@ $purple: #7C3AED;
     text-decoration: underline;
   }
 }
-
-// For debugging purposes only
-// table, th, td {
-//   border: 1px solid black;
-// }
-
-/*
-
-  &__row {
-    // background-color: #6B7280;
-  }
-
-  // &__row {
-  //   &:nth-child(even) {
-  //     background-color: black;
-
-  //     & > .table_cell > .table__input {
-  //       color: GREEN;
-  //     }
-  //   }
-
-  //   &:nth-child(odd) {
-  //     background-color: red;
-  //   }
-  // }
-
-  */
