@@ -107,7 +107,18 @@ export default function Home() {
     <div>
       <Head>
         <title>Markdown Table Generator</title>
-        <meta name="description" content="Markdown Table Generator" />
+        <meta property="og:title" content="Markdown Table Generator" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://rogueart.github.io/markdown-table-gen/"
+        />
+        <meta property="og:image" content="https://i.imgur.com/yBc2NTl.png" />
+        <meta
+          property="og:description"
+          content="A website that allows you to easily make tables in markdown."
+        />
+        <meta name="theme-color" content="#7C3AED" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
