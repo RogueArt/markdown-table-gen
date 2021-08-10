@@ -48,6 +48,16 @@ $purple: #7C3AED;
   height: 240px;
 }
 
+.footer {
+  &__contact {
+    font-size: 14px;
+  }
+
+  &__link {
+    text-decoration: underline;
+  }
+}
+
 // For debugging purposes only
 // table, th, td {
 //   border: 1px solid black;

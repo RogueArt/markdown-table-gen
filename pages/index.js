@@ -83,8 +83,8 @@ export default function Home() {
       {/* Footer */}
       <footer className="footer">
         <p className="footer__contact">
-          Check out my other projects{' '}
-          <a href="https://github.com/RogueArt">here.</a>
+          If you found this tool useful, check out my other projects{' '}
+          <a className="footer__link" href="https://github.com/RogueArt">here!</a>
         </p>
       </footer>
     </div>
