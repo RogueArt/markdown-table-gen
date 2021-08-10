@@ -70,7 +70,12 @@ export default function Home() {
   function renderTableHeader() {
     return tableContents[0].map((elem, index) => (
       <th key={index} className="table__header">
-        {elem}
+        <input
+          className="table__input"
+          type="text"
+          value={elem}
+          onChange={e => handleContentChange(e, [-1, index])}
+        />
       </th>
     ))
   }
