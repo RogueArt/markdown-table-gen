@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 
 import { useEffect, useState, useRef } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
