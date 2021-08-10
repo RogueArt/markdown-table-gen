@@ -50,8 +50,9 @@ function createHeaderGap(maxWidths) {
   return maxWidths.map(width => '-'.repeat(width))
 }
 
+// TO-DO: Create a more efficient algorithm for this
 // Formats table contents as a string
-function formatTableAsStr(tableContents) {
+export function formatTableAsStr(tableContents) {
   // Get widths of each column
   const maxWidths = getColumnWidths(tableContents)
 
@@ -60,18 +61,40 @@ function formatTableAsStr(tableContents) {
   const headerLine = formatLine(tableContents[0], maxWidths)
   const headerGap = formatLine(createHeaderGap(maxWidths), maxWidths)
   const bodyLines = tableContents
-    .slice(2)
+    .slice(1)
     .reduce((line, wordRow) => line + formatLine(wordRow, maxWidths), '')
     .trim()
   // Go through each row, format as a line, then go to next line
   return headerLine + headerGap + bodyLines
 }
 
-console.log(
-  formatTableAsStr([
-    ['First Header', 'Second Header'],
-    ['Content Cell 1', 'Content Cell 200'],
-    ['Content Cell 100', 'Content Cell 500'],
-    ['Content Cell 10', 'Content Cell 50'],
-  ])
-)
+export function createInitialArray(height, width) {
+  // Create a 1D array of size width filled with A, B, C, etc.
+  const headerArr = new Array(width).fill(null).map((_, idx) => String.fromCharCode(65 + idx))
+  
+  // Create 2D array of size height, fill it with empty arrays of size width that have empty strings
+  const emptyArr = new Array(height-1).fill(null).map(() => new Array(width).fill(''))
+  
+  // Create initial array from combining the two
+  // Note, we make headerArr into a 2D array when we combine
+  const initialArray = [headerArr].concat(emptyArr)
+
+  return initialArray
+}
+
+export function clearContents(contents) {
+  return contents.map((contentRow, idx) => {
+    if (idx !== 0) contentRow.fill('')
+  })
+}
+
+// TO-DO: Set up Jest for automated testing
+// Tests:
+// console.log(
+//   formatTableAsStr([
+//     ['First Header', 'Second Header'],
+//     ['Content Cell 1', 'Content Cell 200'],
+//     ['Content Cell 100', 'Content Cell 500'],
+//     ['Content Cell 10', 'Content Cell 50'],
+//   ])
+// )
