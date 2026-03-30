@@ -1,5 +1,15 @@
 $purple: #7C3AED;
+$dark-gray: #111827;
 
+// Dark mode
+@media (prefers-color-scheme: dark) {
+  body, input, .textarea {
+    color: white;
+    background-color: $dark-gray;
+  } 
+}
+
+// Horizontally center the content
 .main {
   display: grid;
   place-items: center;
